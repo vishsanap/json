@@ -1,0 +1,130 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  <title>TRACK YOUR ORDER</title>
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+
+</style>
+  
+</head>
+<body>
+  <div class="container" style="padding:50px 250px;">
+    <h1>Track Your Order Details</h1>
+	<form role="form">
+        <div class="form-group">
+          <input type="input" class="form-control input-lg" id="txt-search" placeholder="Enter Your Order-id HERE.!">
+        </div>
+	</form>
+	<div id="filter-records"></div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+var data = 
+[
+
+{
+"id":"Order-id-123456",
+"product":"Handset NAME - Moto g4 Plus",
+"details_customer":"Details of Delivery - Your Product Has been delivered to you by Rakesh Sharma Contact-022-25645658"
+
+},
+
+{
+"id":"Order-id-256489",
+"product":"Handset NAME - Moto G Play ",
+"details_customer":"Details of Order - Charging Problem of Moto g4 play has been fixed.Please Collect Your Handset at centre. Contact - VIJAY SINGH,Phone No-9875694583"
+
+},
+
+{
+"id":"Order-id-568963",
+"product":"Handset NAME - Moto G Play ",
+"details_customer":"Details of Order Charging Problem of Moto g4 play has been solved.Please Collect Your Handset at centre.Contact - VIJAY SINGH,Phone No-995248735"
+},
+
+{
+"id":"Order-id-25456",
+"product":"Handset NAME - Samsung on 7 Pro",
+"details_customer":"Details of Delivery - Your Product Has been delivered to you by Ganesh Patil,Contact-8657256481"
+
+},
+
+{
+"id":"Order-id-666",
+"product":"Handset NAME -Samsung on 7 Pro ",
+"details_customer":"Details of Order - Display problem of samsung on 7 pro has been fixed.Will be delivered to you by courier today itself.Contact-VIJAY SINGH,Phone No-7824632145"
+
+},
+
+{
+"id":"Order-id-777",
+"product":"Handset NAME - Moto g4 Play ",
+"details_customer":"Details of Order - Frame and Housing Problem of Moto g4 Play has been solved,Will be delivered to you by courier today itself.Contact-J Shinde, Phone No-7256478936"
+},
+
+{
+"id":"Order-id-256457",
+"product":"Handset NAME -Moto g4 Play ",
+"details_customer":"Details of Order - Product will Be delivered to you by courier today itself. Contact-Jay Shaikh,Phone No-9954622245"
+},
+
+{
+"id":"Order-id-8912",
+"product":"Handset NAME - Samsung on 7 Pro",
+"details_customer":"Details of Order - Charging Problem of Samsung ON 7 Pro has been solved. Please collect your Handset.Pickup Date - 12 APRIL 2017,PICKUP EXECUTIVE'S NAME-VIshal Singh,Phone No-8654977878"
+},
+
+{
+"id":"Order-id-1189",
+"product":"Handset NAME - Moto g4 Plus",
+"details_customer":"Details of Delivery - Your Product Has been delivered to you by VIJAY SINGH , Phone No-9875694583"
+},
+
+{
+"id":"Order-id-1245",
+"product":"Handset NAME - Moto g4 Play",
+"details_customer":" Details of Repair Status - All IC work is done , Will be delivered to you by courier.Contact - EXECUTIVE'S NAME - VIJAY SINGH , Phone No-9875694583"
+}
+];
+
+
+$('#txt-search').keyup(function(){
+            var searchField = $(this).val();
+			if(searchField === '')  {
+				$('#filter-records').html('');
+				return;
+			}
+			
+            var regex = new RegExp(searchField, "i");
+            var output = '<div class="row">';
+            var count = 1;
+			  $.each(data, function(key, val){
+				if ((val.id.search(regex) != -1) || (val.product.search(regex) != -1)) {
+				  output += '<div class="col-md-6 well">';
+				  output += '<div class="col-md-7">';
+				  output += '<p>' + val.id + '</p>'
+				  output += '<p>' + val.product + '</p>'
+				  output += '<p>' + val.details_customer + '</p>'
+ 				  output += '</div>';
+				  output += '</div>';
+				  if(count%2 == 0){
+					output += '</div><div class="row">'
+				  }
+				  count++;
+				}
+			  });
+			  output += '</div>';
+			  $('#filter-records').html(output);
+        });
+  });
+</script>
